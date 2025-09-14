@@ -265,16 +265,16 @@ The **nature of state and action spaces** in the environment.
 ```mermaid
 graph TB
     subgraph "Discrete: Tic-Tac-Toe"
-        A1[State Space:<br/>9 board positions<br/>3 possible values<br/>(X, O, Empty)]
-        A1 --> B1[Total States:<br/>3^9 = 19,683<br/>(finite and countable)]
+        A1[State Space:<br/>9 board positions<br/>3 possible values<br/>X, O, Empty]
+        A1 --> B1[Total States:<br/>3^9 = 19,683<br/>finite and countable]
         
         A2[Action Space:<br/>Place X or O<br/>in empty position]
-        A2 --> B2[Max 9 actions<br/>per game<br/>(discrete choices)]
+        A2 --> B2[Max 9 actions<br/>per game<br/>discrete choices]
     end
     
     subgraph "Continuous: Robot Arm Control"
-        A3[State Space:<br/>Joint angles θ₁, θ₂, θ₃...<br/>Angular velocities<br/>Position coordinates]
-        A3 --> B3[Infinite States:<br/>θᵢ ∈ ℝ<br/>(real-valued parameters)]
+        A3[State Space:<br/>Joint angles θ1, θ2, θ3<br/>Angular velocities<br/>Position coordinates]
+        A3 --> B3[Infinite States:<br/>θi ∈ Real numbers<br/>real-valued parameters]
         
         A4[Action Space:<br/>Motor torques<br/>Velocity commands<br/>Force applications]
         A4 --> B4[Continuous Control:<br/>Smooth parameter<br/>adjustments]
