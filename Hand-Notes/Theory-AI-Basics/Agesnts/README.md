@@ -204,6 +204,42 @@ Input → Preprocessing → Analysis → Decision → Action → Output
 - **Market-Based**: Agents bid for tasks and resources
 - **Consensus**: Agents vote on decisions
 
+```mermaid
+graph TB
+    subgraph "Hierarchical"
+        A[Manager Agent] --> B[Worker Agent 1]
+        A --> C[Worker Agent 2]
+        A --> D[Worker Agent 3]
+    end
+    
+    subgraph "Peer-to-Peer"
+        E[Agent A] <--> F[Agent B]
+        F <--> G[Agent C]
+        G <--> H[Agent D]
+        H <--> E
+    end
+    
+    subgraph "Market-Based"
+        I[Task Auctioneer] --> J[Bidding Agent 1]
+        I --> K[Bidding Agent 2]
+        I --> L[Bidding Agent 3]
+        J -.-> I
+        K -.-> I
+        L -.-> I
+    end
+    
+    subgraph "Consensus"
+        M[Agent 1] --> P[Voting System]
+        N[Agent 2] --> P
+        O[Agent 3] --> P
+        P --> Q[Group Decision]
+    end
+    
+    style A fill:#fff3e0
+    style I fill:#e8f5e8
+    style P fill:#f3e5f5
+```
+
 ### 4. Tool Integration Pattern
 ```python
 class Agent:
