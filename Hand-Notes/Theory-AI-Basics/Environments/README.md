@@ -76,19 +76,19 @@ The **observability** of an environment determines how much information is avail
 ```mermaid
 graph TB
     subgraph "Fully Observable: Chess Game"
-        A1[Complete Game State] --> B1[AI can see:<br/>✓ All pieces<br/>✓ All positions<br/>✓ All legal moves<br/>✓ Game history]
+        A1[Complete Game State] --> B1[AI can see:<br/>All pieces<br/>All positions<br/>All legal moves<br/>Game history]
         B1 --> C1[Perfect Information<br/>Decision Making]
     end
     
     subgraph "Partially Observable: Poker Game"
-        A2[Hidden Information] --> B2[AI can see:<br/>✓ Own cards<br/>✓ Community cards<br/>✓ Betting actions<br/>✗ Opponent cards]
-        B2 --> C2[Must estimate:<br/>• Opponent hands<br/>• Bluffing patterns<br/>• Hidden strategies]
+        A2[Hidden Information] --> B2[AI can see:<br/>Own cards<br/>Community cards<br/>Betting actions<br/>NOT opponent cards]
+        B2 --> C2[Must estimate:<br/>Opponent hands<br/>Bluffing patterns<br/>Hidden strategies]
         C2 --> D2[Probabilistic<br/>Decision Making]
     end
     
     subgraph "Real-World: Autonomous Vehicle"
-        A3[Sensor Limitations] --> B3[Can observe:<br/>✓ Nearby objects<br/>✓ Road conditions<br/>✗ Distant obstacles<br/>✗ Other drivers' intentions]
-        B3 --> C3[Must predict:<br/>• Traffic patterns<br/>• Pedestrian behavior<br/>• Weather changes]
+        A3[Sensor Limitations] --> B3[Can observe:<br/>Nearby objects<br/>Road conditions<br/>NOT distant obstacles<br/>NOT driver intentions]
+        B3 --> C3[Must predict:<br/>Traffic patterns<br/>Pedestrian behavior<br/>Weather changes]
         C3 --> D3[Robust Decision<br/>Making Under<br/>Uncertainty]
     end
     
@@ -108,7 +108,7 @@ The **predictability** of outcomes when actions are taken in the environment.
 - **Examples**: Chess, Mathematical puzzles, Grid worlds
 
 #### Stochastic Environments
-- Involve **random or unpredictable (probabilistic)** outcomes
+- Involve **random or unpredictable probabilistic** outcomes
 - Same action may produce different results
 - Outcomes governed by probability distributions
 - **Examples**: Poker, Weather systems, Financial markets
@@ -117,18 +117,18 @@ The **predictability** of outcomes when actions are taken in the environment.
 graph LR
     subgraph "Deterministic: Chess Move"
         A1[State: Knight at e4] --> B1[Action: Move to f6]
-        B1 --> C1[Result: Knight at f6<br/>(100% certain)]
+        B1 --> C1[Result: Knight at f6<br/>100% certain]
     end
     
     subgraph "Stochastic: Weather Prediction"
-        A2[State: Cloudy, 70% humidity] --> B2[Action: Predict rain]
+        A2[State: Cloudy 70% humidity] --> B2[Action: Predict rain]
         B2 --> C2{Actual Outcome}
         C2 --> D2[Rain: 60% chance]
         C2 --> E2[No rain: 40% chance]
     end
     
     subgraph "Stochastic: Stock Trading"
-        A3[State: Stock at $100] --> B3[Action: Buy 100 shares]
+        A3[State: Stock at 100 USD] --> B3[Action: Buy 100 shares]
         B3 --> C3{Market Response}
         C3 --> D3[Price rises: 45%]
         C3 --> E3[Price stays: 30%]
@@ -221,7 +221,7 @@ The **temporal stability** of the environment during decision-making.
 ```mermaid
 graph TB
     subgraph "Static: Sudoku Puzzle"
-        A1[Puzzle State] --> B1[AI Processing Time<br/>(Unlimited)]
+        A1[Puzzle State] --> B1[AI Processing Time<br/>Unlimited]
         B1 --> C1[Make Move]
         C1 --> D1[Puzzle waits<br/>unchanged during<br/>deliberation]
         D1 --> B1
@@ -229,7 +229,7 @@ graph TB
     
     subgraph "Dynamic: Air Traffic Control"
         A2[Aircraft Positions] --> B2[Planes keep moving<br/>Weather changing<br/>New flights arriving]
-        B2 --> C2[Must decide quickly<br/>(Real-time constraints)]
+        B2 --> C2[Must decide quickly<br/>Real-time constraints]
         C2 --> D2[Environment continues<br/>evolving regardless]
         D2 --> B2
     end
@@ -266,24 +266,24 @@ The **nature of state and action spaces** in the environment.
 graph TB
     subgraph "Discrete: Tic-Tac-Toe"
         A1[State Space:<br/>9 board positions<br/>3 possible values<br/>X, O, Empty]
-        A1 --> B1[Total States:<br/>3^9 = 19,683<br/>finite and countable]
+        A1 --> B1[Total States:<br/>3 to power 9 = 19683<br/>finite and countable]
         
         A2[Action Space:<br/>Place X or O<br/>in empty position]
         A2 --> B2[Max 9 actions<br/>per game<br/>discrete choices]
     end
     
     subgraph "Continuous: Robot Arm Control"
-        A3[State Space:<br/>Joint angles θ1, θ2, θ3<br/>Angular velocities<br/>Position coordinates]
-        A3 --> B3[Infinite States:<br/>θi ∈ Real numbers<br/>real-valued parameters]
+        A3[State Space:<br/>Joint angles theta1 theta2 theta3<br/>Angular velocities<br/>Position coordinates]
+        A3 --> B3[Infinite States:<br/>theta in Real numbers<br/>real-valued parameters]
         
         A4[Action Space:<br/>Motor torques<br/>Velocity commands<br/>Force applications]
         A4 --> B4[Continuous Control:<br/>Smooth parameter<br/>adjustments]
     end
     
     subgraph "Mixed: Video Games"
-        A5[Discrete Elements:<br/>• Lives/Health points<br/>• Inventory items<br/>• Level progression]
+        A5[Discrete Elements:<br/>Lives Health points<br/>Inventory items<br/>Level progression]
         
-        A6[Continuous Elements:<br/>• Character position<br/>• Movement speed<br/>• Camera angles]
+        A6[Continuous Elements:<br/>Character position<br/>Movement speed<br/>Camera angles]
         
         A5 --> C5[Hybrid Environment<br/>Requires different<br/>approaches for each]
         A6 --> C5
@@ -305,16 +305,16 @@ graph TB
     subgraph "Environment Complexity Scale"
         A[Simple] --> B[Moderate] --> C[Complex] --> D[Real-World]
         
-        E[• Fully Observable<br/>• Deterministic<br/>• Episodic<br/>• Static<br/>• Discrete] --> F[• Mix of properties<br/>• Some uncertainty<br/>• Moderate dynamics]
+        E[Fully Observable<br/>Deterministic<br/>Episodic<br/>Static<br/>Discrete] --> F[Mix of properties<br/>Some uncertainty<br/>Moderate dynamics]
         
-        F --> G[• Partially Observable<br/>• Stochastic<br/>• Sequential<br/>• Dynamic<br/>• Continuous]
+        F --> G[Partially Observable<br/>Stochastic<br/>Sequential<br/>Dynamic<br/>Continuous]
         
-        G --> H[• Highly uncertain<br/>• Multi-agent<br/>• Real-time<br/>• Safety-critical<br/>• Unstructured]
+        G --> H[Highly uncertain<br/>Multi-agent<br/>Real-time<br/>Safety-critical<br/>Unstructured]
     end
     
     subgraph "Example Environments"
-        I[Tic-Tac-Toe] --> J[Chess/Checkers]
-        J --> K[Poker/Trading]
+        I[Tic-Tac-Toe] --> J[Chess Checkers]
+        J --> K[Poker Trading]
         K --> L[Autonomous Driving]
         L --> M[General Robotics]
     end
@@ -322,9 +322,9 @@ graph TB
     style E fill:#e8f5e8
     style F fill:#fff3e0
     style G fill:#ffebee
-    style H fill:#ff5722,color:#fff
+    style H fill:#d32f2f,color:#fff
     style I fill:#e8f5e8
-    style M fill:#ff5722,color:#fff
+    style M fill:#d32f2f,color:#fff
 ```
 
 ### Environment Categories by Domain
@@ -341,7 +341,7 @@ graph TB
         A[Perfect Information<br/>Games] --> A1[Chess<br/>Go<br/>Checkers]
         B[Imperfect Information<br/>Games] --> B1[Poker<br/>Bridge<br/>Hidden Role Games]
         C[Real-time Strategy<br/>Games] --> C1[StarCraft<br/>Age of Empires<br/>Dota 2]
-        D[Puzzle<br/>Games] --> D1[Sudoku<br/>Crosswords<br/>Rubik's Cube]
+        D[Puzzle<br/>Games] --> D1[Sudoku<br/>Crosswords<br/>Rubik Cube]
     end
     
     style A1 fill:#e8f5e8
@@ -380,13 +380,13 @@ graph TB
         A[Robot Agent] <--> B[Home Environment]
         
         subgraph "Environmental Factors"
-            C[Physical Layout:<br/>• Rooms and corridors<br/>• Furniture placement<br/>• Floor types<br/>• Obstacles]
+            C[Physical Layout:<br/>Rooms and corridors<br/>Furniture placement<br/>Floor types<br/>Obstacles]
             
-            D[Dynamic Elements:<br/>• Moving people/pets<br/>• Falling debris<br/>• Door open/close<br/>• Lighting changes]
+            D[Dynamic Elements:<br/>Moving people pets<br/>Falling debris<br/>Door open close<br/>Lighting changes]
             
-            E[Hidden Information:<br/>• Dirt under furniture<br/>• Multiple floor levels<br/>• Closed rooms<br/>• Stairs/hazards]
+            E[Hidden Information:<br/>Dirt under furniture<br/>Multiple floor levels<br/>Closed rooms<br/>Stairs hazards]
             
-            F[Uncertainty:<br/>• Random dirt appearance<br/>• Battery degradation<br/>• Sensor noise<br/>• Mechanical wear]
+            F[Uncertainty:<br/>Random dirt appearance<br/>Battery degradation<br/>Sensor noise<br/>Mechanical wear]
         end
     end
     
@@ -396,11 +396,11 @@ graph TB
     B --> F
     
     subgraph "Environment Classification"
-        G[❓ Partially Observable<br/>Can't see all dirt/obstacles]
-        H[🎲 Stochastic<br/>New dirt randomly appears]
-        I[📈 Sequential<br/>Cleaning affects future paths]
-        J[🔄 Dynamic<br/>People move around]
-        K[🏠 Mixed<br/>Room layout: Discrete<br/>Position: Continuous]
+        G[Partially Observable<br/>Cannot see all dirt obstacles]
+        H[Stochastic<br/>New dirt randomly appears]
+        I[Sequential<br/>Cleaning affects future paths]
+        J[Dynamic<br/>People move around]
+        K[Mixed<br/>Room layout Discrete<br/>Position Continuous]
     end
     
     B --> G
@@ -435,13 +435,13 @@ graph TB
         A[Trading Algorithm] <--> B[Financial Market]
         
         subgraph "Market Information"
-            C[Observable Data:<br/>• Current prices<br/>• Trading volume<br/>• Order book<br/>• News feeds<br/>• Technical indicators]
+            C[Observable Data:<br/>Current prices<br/>Trading volume<br/>Order book<br/>News feeds<br/>Technical indicators]
             
-            D[Hidden Information:<br/>• Other traders' strategies<br/>• Insider information<br/>• Market manipulation<br/>• Future announcements]
+            D[Hidden Information:<br/>Other traders strategies<br/>Insider information<br/>Market manipulation<br/>Future announcements]
             
-            E[Market Dynamics:<br/>• Price volatility<br/>• Liquidity changes<br/>• Market sentiment<br/>• Economic cycles]
+            E[Market Dynamics:<br/>Price volatility<br/>Liquidity changes<br/>Market sentiment<br/>Economic cycles]
             
-            F[External Factors:<br/>• Regulatory changes<br/>• Global events<br/>• Company earnings<br/>• Political developments]
+            F[External Factors:<br/>Regulatory changes<br/>Global events<br/>Company earnings<br/>Political developments]
         end
     end
     
@@ -451,11 +451,11 @@ graph TB
     B --> F
     
     subgraph "Environment Properties"
-        G[❓ Partially Observable<br/>Hidden market forces]
-        H[🎲 Highly Stochastic<br/>Random price movements]
-        I[📈 Sequential<br/>Trades affect future prices]
-        J[⚡ Dynamic<br/>Markets never stop]
-        K[📊 Continuous<br/>Real-valued prices]
+        G[Partially Observable<br/>Hidden market forces]
+        H[Highly Stochastic<br/>Random price movements]
+        I[Sequential<br/>Trades affect future prices]
+        J[Dynamic<br/>Markets never stop]
+        K[Continuous<br/>Real-valued prices]
     end
     
     B --> G
@@ -467,7 +467,7 @@ graph TB
     style A fill:#e8f5e8
     style B fill:#e1f5fe
     style G fill:#ffebee
-    style H fill:#ff5722,color:#fff
+    style H fill:#d32f2f,color:#fff
     style I fill:#fff3e0
     style J fill:#fff3e0
     style K fill:#fff3e0
@@ -483,13 +483,13 @@ graph TB
         A[Diagnostic AI] <--> B[Healthcare System]
         
         subgraph "Patient Information"
-            C[Available Data:<br/>• Symptoms<br/>• Test results<br/>• Medical history<br/>• Vital signs<br/>• Imaging data]
+            C[Available Data:<br/>Symptoms<br/>Test results<br/>Medical history<br/>Vital signs<br/>Imaging data]
             
-            D[Uncertain Factors:<br/>• Patient honesty<br/>• Symptom severity<br/>• Disease progression<br/>• Individual variations]
+            D[Uncertain Factors:<br/>Patient honesty<br/>Symptom severity<br/>Disease progression<br/>Individual variations]
             
-            E[Temporal Aspects:<br/>• Disease evolution<br/>• Treatment effects<br/>• Recovery patterns<br/>• Comorbidities]
+            E[Temporal Aspects:<br/>Disease evolution<br/>Treatment effects<br/>Recovery patterns<br/>Comorbidities]
             
-            F[External Constraints:<br/>• Hospital resources<br/>• Time limitations<br/>• Cost considerations<br/>• Ethical guidelines]
+            F[External Constraints:<br/>Hospital resources<br/>Time limitations<br/>Cost considerations<br/>Ethical guidelines]
         end
     end
     
@@ -499,11 +499,11 @@ graph TB
     B --> F
     
     subgraph "Environment Characteristics"
-        G[❓ Partially Observable<br/>Incomplete patient data]
-        H[🎲 Stochastic<br/>Disease uncertainty]
-        I[📈 Sequential<br/>Diagnosis affects treatment]
-        J[⏰ Semi-Dynamic<br/>Patient condition changes]
-        K[📋 Mixed<br/>Discrete symptoms<br/>Continuous measurements]
+        G[Partially Observable<br/>Incomplete patient data]
+        H[Stochastic<br/>Disease uncertainty]
+        I[Sequential<br/>Diagnosis affects treatment]
+        J[Semi-Dynamic<br/>Patient condition changes]
+        K[Mixed<br/>Discrete symptoms<br/>Continuous measurements]
     end
     
     B --> G
@@ -533,7 +533,7 @@ graph TB
         A[State Space<br/>Definition] --> B[Action Space<br/>Definition]
         B --> C[Transition Model<br/>Dynamics]
         C --> D[Observation Model<br/>Sensors]
-        D --> E[Reward/Feedback<br/>Structure]
+        D --> E[Reward Feedback<br/>Structure]
         E --> F[Initial State<br/>Distribution]
         
         G[Environment<br/>Constraints] --> A
@@ -564,7 +564,7 @@ graph LR
     end
     
     subgraph "Trade-offs"
-        H[Accuracy ↓<br/>Computability ↑<br/>Interpretability ↑<br/>Performance ↓]
+        H[Accuracy decreases<br/>Computability increases<br/>Interpretability increases<br/>Performance decreases]
     end
     
     C --> H
@@ -657,8 +657,8 @@ graph TB
     end
     
     subgraph "Complexity Categories"
-        K[Low: Board Games<br/>State: 10^2-10^6<br/>Actions: 10^1-10^2]
-        L[Medium: Video Games<br/>State: 10^6-10^12<br/>Actions: 10^2-10^4]
+        K[Low: Board Games<br/>State: 10^2 to 10^6<br/>Actions: 10^1 to 10^2]
+        L[Medium: Video Games<br/>State: 10^6 to 10^12<br/>Actions: 10^2 to 10^4]
         M[High: Robotics<br/>State: Continuous<br/>Actions: Continuous]
         N[Extreme: Real World<br/>State: Unbounded<br/>Actions: Unbounded]
     end
@@ -671,7 +671,7 @@ graph TB
     style K fill:#e8f5e8
     style L fill:#fff3e0
     style M fill:#ffebee
-    style N fill:#ff5722,color:#fff
+    style N fill:#d32f2f,color:#fff
 ```
 
 ### Environment Difficulty Progression
@@ -692,7 +692,7 @@ Common progression from simple to complex environments:
 2. **Incremental Complexity**: Gradually increase difficulty as systems improve
 3. **Clear Objectives**: Define success metrics and evaluation criteria
 4. **Realistic Constraints**: Include relevant real-world limitations
-5. **Balanced Challenge**: Not too easy (trivial) or too hard (impossible)
+5. **Balanced Challenge**: Not too easy or too hard
 
 ### Environment Documentation
 
@@ -792,9 +792,9 @@ graph TB
 - Benchmarking and evaluation frameworks
 
 #### Online Courses
-- CS 285 (UC Berkeley): Deep Reinforcement Learning
-- CS 231n (Stanford): Convolutional Neural Networks
-- CS 224n (Stanford): Natural Language Processing
+- CS 285 UC Berkeley: Deep Reinforcement Learning
+- CS 231n Stanford: Convolutional Neural Networks
+- CS 224n Stanford: Natural Language Processing
 
 ### Community and Tools
 
@@ -826,6 +826,19 @@ graph TB
 - [ ] Write documentation and examples
 - [ ] Set up evaluation metrics
 - [ ] Plan for future extensions
+
+### Common Environment Examples
+
+| Environment | Observable | Deterministic | Episodic | Static | Discrete | Complexity |
+|-------------|------------|---------------|----------|--------|----------|------------|
+| **Chess** | Fully | Yes | No | Yes | Yes | Medium |
+| **Poker** | Partially | No | No | Yes | Yes | High |
+| **Crossword** | Fully | Yes | No | Yes | Yes | Low |
+| **Email Spam Detection** | Fully | No | Yes | Yes | Yes | Low |
+| **Autonomous Driving** | Partially | No | No | No | No | Extreme |
+| **Stock Trading** | Partially | No | No | No | No | High |
+| **Video Games** | Partially | No | No | No | Mixed | Medium |
+| **Web Search** | Partially | No | Yes | No | Yes | Medium |
 
 ---
 
